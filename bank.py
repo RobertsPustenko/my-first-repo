@@ -1,5 +1,14 @@
 import datetime
 
+#UZDEVUMS: izveido klasi Transaction.
+
+class Transaction:
+    def __init__(self, amount: float = 0, note: str = ''):
+        self.amount = amount
+        self.note = note
+        self.timestamp = datetime.datetime.now()
+
+
 class Account:
     auto_account_number = 1234567890
 
@@ -8,12 +17,7 @@ class Account:
         Account.auto_account_number += 1
         self.currency = currency
         self.initial_balance = initial_balance
-        self.timestamp = datetime.datetime.now()
 
-    @property
-    def account_number(self):
-        return self._account_number
-    
 class Client:
     def __init__(self, name: str):
         self.name = name
@@ -24,12 +28,8 @@ class Client:
         self.accounts.append(account)
 
     def introduce(self):
-        print('================================================')
         print(f"Hi, my name is {self.name}, I have {len(self.accounts)} accounts in your bank.")
 
-#UZDEVUMS: izveido klientam metodi (introduce), kas izvada sēkojošo info:
-#Piemērs
-#Hi I am Anna, I have 3 accounts in your bank.
 
 clients = []
 clients.append(Client('Anna'))
@@ -45,16 +45,5 @@ clients[1].add_account(Account('JPY', 10000))
 
 clients[2].add_account(Account('EUR'))
 
-clients[0].accounts[0].account_number = '999999999'
-
 for client in clients:
     client.introduce()
-    
-def print_accounts(self):
-    for account in self.accounts:
-        print(f'{account.account_number} ({account.currecy} {account.inital_balance})')
-
-for client in clients:
-    client.introduce()
-    client.print_accounts()        
-        
